@@ -1,11 +1,11 @@
 var SnottyDancer = function (top, left, timeBetweenSteps) {
   // console.log('1');
-  Dancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps / 40);
   this.rotation = 0;
   this.top = top;
   this.left = left;
   this.timeBetweenSteps;
-  this.speed = timeBetweenSteps / 80;
+  this.speed = timeBetweenSteps / 20;
   this.$node = $('<span class="snotty"></span>');
 
 };
@@ -22,13 +22,16 @@ SnottyDancer.prototype.step = function () {
     return;
   }
 
-  let angle = Math.atan(this.top - sibling.top, this.left - sibling.left);
+  // let angle = Math.atan(this.top - sibling.top, this.left - sibling.left);
 
-  this.top += Math.sin(angle) * this.speed;
-  this.left += Math.cos(angle) * this.speed;
+  // this.top += Math.sin(angle) * this.speed;
+  // this.left += Math.cos(angle) * this.speed;
 
-  angle = 180 / Math.PI;
-  console.log(Math.sin(angle));
+  // angle = 180 / Math.PI;
+  // console.log(Math.sin(angle));
+
+  this.top += (sibling.top - this.top) / this.speed;
+  this.left += (sibling.left - this.left) / this.speed;
 
   this.setPosition(this.top, this.left);
 };
@@ -39,7 +42,7 @@ SnottyDancer.prototype.findClosestSibling = function () {
     return undefined;
   }
   for (let i = 0; i < window.dancers.length; i ++) {
-    if (window.dancers[i] === this) {
+    if (window.dancers[i] instanceof SnottyDancer || window.dancers[i] instanceof BlinkyDancer) {
       continue;
     }
     let topDist = Math.abs(this.top - window.dancers[i].top);
