@@ -31,3 +31,9 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+.bouncy{
+  border:20px solid whitesmoke;
+  border-radius:20px;
+  position:absolute;
+}
