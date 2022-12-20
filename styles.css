@@ -47,3 +47,8 @@ body, a:link, a:visited, a:active{
   border-radius:20px;
   position:absolute;
 }
+.snotty{
+  border:10px solid red;
+  border-radius:50%;
+  position:absolute;
+}

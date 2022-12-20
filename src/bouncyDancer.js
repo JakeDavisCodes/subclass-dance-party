@@ -62,8 +62,5 @@ BouncyDancer.prototype.step = function () {
   this.top += this.yDirection * this.speed;
   this.left += this.xDirection * this.speed;
 
-  console.log(this.yDirection);
-
-
   this.setPosition(this.top, this.left);
 };
