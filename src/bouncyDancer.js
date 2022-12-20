@@ -2,7 +2,7 @@ var BouncyDancer = function (top, left, timeBetweenSteps) {
   // console.log('1');
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<span class="bouncy"></span>');
-  this.speed = timeBetweenSteps / 20;
+  this.speed = timeBetweenSteps / 40;
   this.timeBetweenSteps = 10;
   this.xDirection;
   this.yDirection;
@@ -26,7 +26,7 @@ BouncyDancer.prototype.initDirection = function () {
     this.yDirection = -1;
   } else { this.yDirection = 1; }
 
-}
+};
 
 BouncyDancer.prototype.step = function () {
 
@@ -42,11 +42,21 @@ BouncyDancer.prototype.step = function () {
   left += xDirec * speed
   */
 
-  if (this.left > $('body').width() || this.left < 0) {
+  if (this.left > $('body').width()) {
     this.xDirection *= -1;
+    this.$node.css('border-color', '#43e0c6');
   }
-  if (this.top > $('body').height() || this.top < 0) {
+  if (this.left < 0) {
+    this.xDirection *= -1;
+    this.$node.css('border-color', 'red');
+  }
+  if (this.top < 0) {
     this.yDirection *= -1;
+    this.$node.css('border-color', 'blue');
+  }
+  if (this.top > $('body').height()) {
+    this.yDirection *= -1;
+    this.$node.css('border-color', '#d6c601');
   }
 
   this.top += this.yDirection * this.speed;

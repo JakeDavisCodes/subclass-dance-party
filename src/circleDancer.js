@@ -54,6 +54,8 @@ CircleDancer.prototype.step = function () {
   this.top += (topNegative * Math.floor(Math.random() * 30));
   this.left += (leftNegative * Math.floor(Math.random() * 30));
 
+  this.$node.css({'border': + Math.floor(Math.random() * 30) + 'px solid cyan'});
+
   this.setPosition(this.top, this.left);
   // console.log(this.top);
 };
